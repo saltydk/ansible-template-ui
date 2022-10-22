@@ -25,7 +25,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           platforms: linux/amd64
-          context: docker/stable
+          context: "{{defaultContext}}:docker/stable"
           push: true
           tags: |
             saltydk/ansible-template-ui:latest
