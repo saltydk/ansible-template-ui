@@ -6,7 +6,6 @@
     - ['/srv/git/saltbox/settings.yml', '/srv/git/saltbox/defaults/settings.yml.default']
     - ['/srv/git/saltbox/adv_settings.yml', '/srv/git/saltbox/defaults/adv_settings.yml.default']
     - ['/srv/git/saltbox/providers.yml', '/srv/git/saltbox/defaults/providers.yml.default']
-  gather_facts: false
   tasks:
     - name: template
       template:
