@@ -25,8 +25,7 @@ import docker
 
 from . import text
 
-from flask_lambda import FlaskLambda
-from flask import request, jsonify
+from flask import request, jsonify, Flask
 
 
 kwargs = {}
@@ -39,7 +38,7 @@ kwargs.update({
     )
 })
 
-app = FlaskLambda(__name__, **kwargs)
+app = Flask(__name__, **kwargs)
 
 
 @app.route('/')
@@ -79,7 +78,7 @@ def render_template():
                     )
                 ),
             },
-            mem_limit='96m',
+            mem_limit='1g',
         )
         container.start()
     except Exception as e:
@@ -97,7 +96,7 @@ def render_template():
             error = stderr or 'Unknown Error'
         else:
             play = response['plays'][0]
-            if exit_status != 0:
+            if exit_status['StatusCode'] != 0:
                 error = play['tasks'][-1]['hosts']['localhost']['msg']
         if error:
             return jsonify(**{'error': text.native(error)}), 400

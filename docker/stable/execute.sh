@@ -11,4 +11,4 @@ export ANSIBLE_FACT_PATH=/srv/git/saltbox/ansible_facts.d
 echo $VARIABLES | base64 -d > /variables.yml
 echo $TEMPLATE | base64 -d > /template.j2
 
-timeout -s KILL 30 env no_proxy='*' ansible-playbook -e @variables.yml playbook.yml
+timeout -s KILL 30 ansible-playbook -e @variables.yml playbook.yml
