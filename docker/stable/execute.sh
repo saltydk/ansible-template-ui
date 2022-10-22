@@ -12,5 +12,3 @@ echo $VARIABLES | base64 -d > /variables.yml
 echo $TEMPLATE | base64 -d > /template.j2
 
 timeout -s KILL 10 ansible-playbook -e @variables.yml playbook.yml
-
-cat /template.out
