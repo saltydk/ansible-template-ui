@@ -10,21 +10,21 @@
   tasks:
     - name: Find Saltbox roles
       no_log: true
-      shell: "find /srv/git/saltbox/roles /opt/sandbox/roles -type d -name 'defaults'"
+      ansible.builtin.shell: "find /srv/git/saltbox/roles /opt/sandbox/roles -type d -name 'defaults'"
       register: saltbox_roles
 
     - name: Include Saltbox role default vars
       no_log: true
-      include_vars: "{{ item }}/main.yml"
+      ansible.builtin.include_vars: "{{ item }}/main.yml"
       with_items: "{{ saltbox_roles.stdout_lines }}"
       loop_control:
         label: "{{ item }}"
 
     - name: template
-      template:
+      ansible.builtin.template:
         src: /template.j2
         dest: /template.out
 
     - name: slurp
-      slurp:
+      ansible.builtin.slurp:
         path: /template.out
