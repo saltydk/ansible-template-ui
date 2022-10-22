@@ -28,9 +28,6 @@
       loop_control:
         label: "{{ item }}"
 
-    - name: Import Inventory variables
-      ansible.builtin.include_vars: "/srv/git/saltbox/inventories/host_vars/localhost.yml"
-
     - name: template
       template:
         src: /template.j2
