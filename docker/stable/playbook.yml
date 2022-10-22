@@ -9,22 +9,14 @@
     - ['/srv/git/saltbox/providers.yml', '/srv/git/saltbox/defaults/providers.yml.default']
   tasks:
     - name: Find Saltbox roles
-      shell: "find /srv/git/saltbox/roles -type d -name 'defaults'"
+      no_log: true
+      shell: "find /srv/git/saltbox/roles /opt/sandbox/roles -type d -name 'defaults'"
       register: saltbox_roles
 
-    - name: Find Sandbox roles
-      shell: "find /opt/sandbox/roles -type d -name 'defaults'"
-      register: sandbox_roles
-
     - name: Include Saltbox role default vars
+      no_log: true
       include_vars: "{{ item }}/main.yml"
       with_items: "{{ saltbox_roles.stdout_lines }}"
-      loop_control:
-        label: "{{ item }}"
-
-    - name: Include Sandbox role default vars
-      include_vars: "{{ item }}/main.yml"
-      with_items: "{{ sandbox_roles.stdout_lines }}"
       loop_control:
         label: "{{ item }}"
 

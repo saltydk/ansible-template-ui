@@ -107,7 +107,7 @@ def render_template():
         except NameError:
             pass
 
-    b64_content = play['tasks'][6]['hosts']['localhost']['content']
+    b64_content = play['tasks'][4]['hosts']['localhost']['content']
     content = text.native(base64.b64decode(b64_content))
 
     return jsonify(**{'content': content})
