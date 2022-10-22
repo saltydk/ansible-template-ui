@@ -8,6 +8,7 @@ export ANSIBLE_ROLES_PATH=/srv/git/saltbox/roles:/srv/git/saltbox/resources/role
 export ANSIBLE_FILTER_PLUGINS=/srv/git/saltbox/filter_plugins
 export ANSIBLE_FACT_PATH=/srv/git/saltbox/ansible_facts.d
 export ANSIBLE_PYTHON_INTERPRETER=/usr/bin/python3
+export ANSIBLE_BECOME_METHOD=sudo
 
 echo $VARIABLES | base64 -d > /variables.yml
 echo $TEMPLATE | base64 -d > /template.j2
