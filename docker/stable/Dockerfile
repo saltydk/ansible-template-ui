@@ -1,7 +1,6 @@
 FROM ubuntu:20.04
 LABEL org.opencontainers.image.authors="salty"
 
-COPY clean_collections.py /tmp/clean_collections.py
 COPY execute.sh /execute.sh
 COPY playbook.yml /playbook.yml
 
