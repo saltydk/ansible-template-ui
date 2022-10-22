@@ -1,5 +1,5 @@
 FROM alpine
-MAINTAINER Matt Martz <matt@sivel.net>
+LABEL org.opencontainers.image.authors="salty"
 
 COPY clean_collections.py /tmp/clean_collections.py
 COPY execute.sh /execute.sh
