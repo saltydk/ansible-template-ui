@@ -8,6 +8,29 @@
     - ['/srv/git/saltbox/adv_settings.yml', '/srv/git/saltbox/defaults/adv_settings.yml.default']
     - ['/srv/git/saltbox/providers.yml', '/srv/git/saltbox/defaults/providers.yml.default']
   tasks:
+    - name: Find Saltbox roles
+      shell: "find /srv/git/saltbox/roles -type d -name 'defaults'"
+      register: saltbox_roles
+
+    - name: Find Sandbox roles
+      shell: "find /opt/sandbox/roles -type d -name 'defaults'"
+      register: sandbox_roles
+
+    - name: Include Saltbox role default vars
+      include_vars: "{{ item }}/main.yml"
+      with_items: "{{ saltbox_roles.stdout_lines }}"
+      loop_control:
+        label: "{{ item }}"
+
+    - name: Include Sandbox role default vars
+      include_vars: "{{ item }}/main.yml"
+      with_items: "{{ sandbox_roles.stdout_lines }}"
+      loop_control:
+        label: "{{ item }}"
+
+    - name: Import Inventory variables
+      ansible.builtin.include_vars: "/srv/git/saltbox/inventories/host_vars/localhost.yml"
+
     - name: template
       template:
         src: /template.j2

@@ -12,4 +12,4 @@ export ANSIBLE_PYTHON_INTERPRETER=/usr/bin/python3
 echo $VARIABLES | base64 -d > /variables.yml
 echo $TEMPLATE | base64 -d > /template.j2
 
-timeout -s KILL 5 ansible-playbook -e @variables.yml playbook.yml
+timeout -s KILL 10 ansible-playbook -e @variables.yml playbook.yml
