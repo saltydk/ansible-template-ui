@@ -6,13 +6,13 @@ Web UI for testing ansible templates
 ### Pull
 
 ```
-docker pull sivel/ansible-template-ui:devel
+docker pull saltydk/ansible-template-ui:latest
 ```
 
 ### Build
 
 ```
-docker build -t ansible-template-ui:devel docker/devel
+docker build -t ansible-template-ui:latest docker/stable
 ```
 
 ## Web App
@@ -24,16 +24,6 @@ python -m ansible_template_ui
 ```
 
 ### Production
-
-#### PEX
-
-```
-pip install pex
-./build_pex.sh
-ansible_template_ui.pex -k gevent ansible_template_ui:app
-```
-
-#### Without PEX
 
 ```
 pip install -r requirements.txt -r deploy-requirements.txt
