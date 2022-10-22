@@ -8,13 +8,13 @@ COPY playbook.yml /playbook.yml
 RUN set -x && \
     apk add --no-cache python3 py3-pip openssl-dev python3-dev libffi-dev ca-certificates gcc make musl-dev git yaml-dev rust cargo && \
     pip3 install -U pip && \
-    pip3 install ansible jmespath netaddr && \
+    pip3 install ansible jmespath netaddr
+
+RUN git clone -v -b master https://github.com/saltyorg/Saltbox.git /srv/git/saltbox  && \
+    git clone -v -b master https://github.com/saltyorg/Sandbox.git /opt/sandbox
+
+RUN apk del py3-pip openssl-dev python3-dev libffi-dev ca-certificates gcc make musl-dev yaml rust cargo && \
     rm -rf /root/.cache && \
     rm -rf /root/.cargo
-
-RUN set -ex && apk --no-cache add sudo
-
-RUN git clone -v -b master https://github.com/saltyorg/Saltbox.git /srv/git/saltbox
-RUN git clone -v -b master https://github.com/saltyorg/Sandbox.git /opt/sandbox
 
 CMD ["/bin/sh", "/execute.sh"]
