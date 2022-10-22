@@ -7,7 +7,7 @@ COPY playbook.yml /playbook.yml
 
 RUN apt update && \
     apt install -y --no-install-recommends --no-install-suggests \
-    python3 python3-pip curl openssl-dev python3-dev libffi-dev ca-certificates gcc make git yaml-dev rust cargo && \
+    python3 python3-pip curl libssl-dev python3-dev libffi-dev ca-certificates gcc make git libyaml-dev && \
     pip3 install -U pip setuptools wheel && \
     pip3 install ansible jmespath netaddr && \
     git clone -v -b master https://github.com/saltyorg/Saltbox.git /srv/git/saltbox && \
@@ -15,7 +15,6 @@ RUN apt update && \
     apt autoremove -y && \
     apt clean && \
     rm -rf /root/.cache && \
-    rm -rf /root/.cargo && \
     rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/*
 
 CMD ["/bin/sh", "/execute.sh"]
