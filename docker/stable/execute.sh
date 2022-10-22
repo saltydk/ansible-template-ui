@@ -11,7 +11,4 @@ export ANSIBLE_FACT_PATH=/srv/git/saltbox/ansible_facts.d
 echo $VARIABLES | base64 -d > /variables.yml
 echo $TEMPLATE | base64 -d > /template.j2
 
-cat /variables.yml
-cat /template.j2
-
 timeout -s KILL 10 ansible-playbook -e @variables.yml playbook.yml
