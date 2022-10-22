@@ -14,4 +14,7 @@ RUN set -x && \
 
 RUN set -ex && apk --no-cache add sudo
 
+RUN git clone -v -b master https://github.com/saltyorg/Saltbox.git /srv/git/saltbox
+RUN git clone -v -b master https://github.com/saltyorg/Sandbox.git /opt/sandbox
+
 CMD ["/bin/sh", "/execute.sh"]

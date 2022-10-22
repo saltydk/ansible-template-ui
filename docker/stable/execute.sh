@@ -13,7 +13,4 @@ export ANSIBLE_BECOME_METHOD=sudo
 echo $VARIABLES | base64 -d > /variables.yml
 echo $TEMPLATE | base64 -d > /template.j2
 
-git clone https://github.com/saltyorg/Saltbox.git /srv/git/saltbox
-git clone https://github.com/saltyorg/Sandbox.git /opt/sandbox
-
 timeout -s KILL 5 ansible-playbook -e @variables.yml playbook.yml
