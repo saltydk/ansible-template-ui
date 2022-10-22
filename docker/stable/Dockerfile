@@ -14,4 +14,6 @@ RUN set -x && \
     rm -rf /root/.cache && \
     rm -rf /root/.cargo
 
+RUN set -ex && apk --no-cache add sudo
+
 CMD ["/bin/sh", "/execute.sh"]
