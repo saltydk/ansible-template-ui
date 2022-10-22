@@ -54,7 +54,7 @@ def render_template():
     client = docker.from_env()
 
     repository, tag = docker.utils.parse_repository_tag(
-        os.getenv('DOCKER_IMAGE', 'sivel/ansible-template-ui')
+        os.getenv('DOCKER_IMAGE', 'saltydk/ansible-template-ui')
     )
 
     if not tag:
