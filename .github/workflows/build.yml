@@ -32,4 +32,8 @@ jobs:
           tags: |
             saltydk/ansible-template-ui:latest
 
+      - uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+
       - uses: gautamkrishnar/keepalive-workflow@v1
