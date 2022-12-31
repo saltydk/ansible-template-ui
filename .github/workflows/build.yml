@@ -31,3 +31,5 @@ jobs:
           push: true
           tags: |
             saltydk/ansible-template-ui:latest
+
+      - uses: gautamkrishnar/keepalive-workflow@v1
